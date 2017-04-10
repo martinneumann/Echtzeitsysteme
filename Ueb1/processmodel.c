@@ -2,8 +2,12 @@
 
 void step(pctx *ctx) {
 	/* rotates processes around the queue */
-	q_add(ctx->qready, ctx->running);
+
+	// change state, add to queue
 	p_switch_state(ctx->running->p_state); 
+	q_add(ctx->qready, ctx->running);
+
+	// get new process, change state
 	ctx->running = q_remove(ctx->qready);
 	p_switch_state(ctx->running->p_state); 
 
