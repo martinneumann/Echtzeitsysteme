@@ -1,17 +1,23 @@
 #include "process.h"
 #include "queue.h"
-
+#include "processmodel.h"
 
 int main() {
-	process p1 = { 1, READY };
+	int i;
 	process p2 = { 2, RUNNING };
+	queue qready = {NULL, NULL};
 	
-	queue q = { NULL, NULL };
-	q_add(&q, &p1);
-	q_add(&q, &p2);
-	q_print(&q);
-	q_remove(&q);
-	q_print(&q);
+	pctx context = {&qready,&p1};
+	while (1) {
+		step(&pctx);
+		print(&pctx);
+		sleep(5);
+		printf("\n");
+	}
+
+
+
+
 
 	
 	return 0;

@@ -1,2 +1,2 @@
-queue: process.c queue.c process.h queue.h
+queuedemo: queuedemo.c process.c queue.c process.h queue.h
 	gcc -o queue queue.c
