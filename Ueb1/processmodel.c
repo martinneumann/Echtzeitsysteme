@@ -20,7 +20,7 @@ void print(pctx *ctx) {
 		//char process[] = p_print(ctx->running);
 		printf("Elements in ready state queue:");
 		q_print(ctx->qready);
-			
+
 		printf("\nCurrently running:");
 		p_print(ctx->running);
 		printf("\n");
@@ -28,4 +28,4 @@ void print(pctx *ctx) {
 }
 
 
-	
+
