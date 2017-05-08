@@ -2,6 +2,7 @@
 #include "queue.h"
 #include "processmodel.h"
 #include <stdio.h>
+#include <unistd.h>
 
 int main() {
 	int i = 0;
@@ -17,6 +18,8 @@ int main() {
 	process p10= {10, READY};
 
 	queue *q = malloc(sizeof(queue));
+	q->start = NULL;
+	q->end = NULL;
 	q_add(q, &p2);
 	q_add(q, &p3);
 	q_add(q, &p4);
@@ -28,14 +31,15 @@ int main() {
 	q_add(q, &p10);
 
 	
-	pctx *context_pt;
-	context_pt->qready = q;
-	context_pt->running = &p1;
+	pctx context_pt;
+	context_pt.qready = q;
+	context_pt.running = &p1;
 	
-	while (i<20) {
+	while (1) {
 	printf("=== NEW CYCLE ===\n");
-	step(context_pt);	
-	print(context_pt);
+	step(&context_pt);	
+	print(&context_pt);
 	i++;
+	sleep(1);
 	}
 }
