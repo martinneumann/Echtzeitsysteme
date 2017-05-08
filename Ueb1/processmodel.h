@@ -7,10 +7,10 @@
 
 typedef struct pctx pctx;
 
-stuct pctx {
+struct pctx {
 	queue *qready;
 	process *running;
-}
+};
 
 void print(pctx *ctx);
 
